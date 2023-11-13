@@ -1,4 +1,6 @@
 #include <Novice.h>
+#include "MyMath.h"
+#include "Debug.h"
 
 const char kWindowTitle[] = "LE2A_14_トヨダユウキ";
 
@@ -25,6 +27,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		/// ↓更新処理ここから
 		///
 
+		Vector3 axis = MyMath::Normalize({ 1.0f, 1.0f, 1.0f });
+		float angle = 0.44f;
+		Matrix4x4 rotateMatrix = MyMath::MakeRotateAxisAngle(axis, angle);
+
 		///
 		/// ↑更新処理ここまで
 		///
@@ -32,6 +38,8 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 		///
 		/// ↓描画処理ここから
 		///
+
+		Debug::MatrixScreenPrintf(0, 0, rotateMatrix, "rotateMatrix");
 
 		///
 		/// ↑描画処理ここまで
